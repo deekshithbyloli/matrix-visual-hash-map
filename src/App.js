@@ -4,6 +4,9 @@ import _ from 'lodash';
 import './App.css';
 
 const App = () => {
+  // Sort the data in descending order based on hour
+  const sortedData = data.sort((a, b) => b.hours[0].hour - a.hours[0].hour);
+
   const maxCount = 1000;
 
   // Extracting the date and hour information from the hour string
@@ -19,8 +22,8 @@ const App = () => {
   const renderMatrix = () => {
     const matrix = [];
 
-    // Get the last 15 days from the data
-    const last15Days = _.takeRight(data, 15);
+    // Get the last 15 days from the sorted data
+    const last15Days = _.takeRight(sortedData, 15);
 
     // Generate the x-axis range
     const xAxis = Array.from({ length: 24 }, (_, index) => index);
@@ -42,7 +45,7 @@ const App = () => {
     // Loop through the days and hours to populate the matrix
     for (let i = 0; i < last15Days.length; i++) {
       const day = last15Days[i];
-      const {  date } = extractDateTime(day.hours[0].hour);
+      const { date } = extractDateTime(day.hours[0].hour);
 
       // Create the row JSX
       const row = day.hours.map((hourData) => {
