@@ -4,12 +4,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    
   }
   
   .row {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+  
   }
   
   .date {
@@ -20,6 +22,7 @@
     width: 30px;
     height: 30px;
     border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
    
   }
   
